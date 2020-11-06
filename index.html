@@ -11,28 +11,34 @@
     <!--Favicon-->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8skkANnFpQAk6PIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAABARABARAAABEBABEBAAAAEAAAEAAAAAIiIiIiIgAAIiIiIiIiIAAiIiIiIiIiAAAiIiIiIiIAACIiIiIiIAAAMiIiACIgAAMzIiIAAgAAAzMzIAAAAAADMzMwAAAAAAAzMwAAAAAAAAMwAAAAAAAAAAAAAAAAD++wAA9NMAAOWXAADvvwAAwAcAAIADAACAAQAA4AEAAOADAADgYwAAwHcAAMD/AADA/wAA4f8AAPP/AAD//wAA" rel="icon" type="image/x-icon" />
     <!--Font Awesome Link-->
-    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>5-Day Weather Forecast</title>
 </head>
 <body>
     
 <!--Header-->
 <header>
-    Weather Dashboard
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand mx-auto display-1">Weather Dashboard</a>
+        </div>
+      </nav>
 </header>
 <main>
     <div class="container-fluid">
         <div class="row">
             <!--Sidebar Left-->
-            <div class="col-md-3">
+            <div class="col-md-3 search-sidebar">
                 <!-- Search Bar-->
-                <input type="text" placeholder="Search city here">
-                <button type="submit" class="btn">Search</button>
-                <!--Prevously Searched List-->
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">
-                    Cras justo odio
-                    </a>
+                <p class="mt-2 font-weight-bold">Search for a city here:</p>
+                <div class="position-relative">
+                    <input type="text" placeholder="Type city here" id='search'>
+                    <button type="submit" class="btn btn-info position-absolute">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="list-group mt-4">
+                    <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
                     <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
                     <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
                     <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
@@ -43,55 +49,70 @@
         <!--Weather display side-->
             <div class="col-md-9">
             <!--Current City container-->
-                <div class="card">
+            <div class="col-md-12">
+                <div class="card mt-3">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            <div class="row">
-                <div class="card" style="width: 10rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
-                      <p class="card-text">Temp</p>
-                      <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 10rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
-                      <p class="card-text">Temp</p>
-                      <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 10rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
-                      <p class="card-text">Temp</p>
-                      <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 10rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
-                      <p class="card-text">Temp</p>
-                      <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 10rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
-                      <p class="card-text">Temp</p>
-                      <p class="card-text">Humidity</p>
+                        <h5 class="card-title city-name">City (DATE)</h5>
+                        <p class="card-text temperature">Temperature</p>
+                        <p class="card-text humidity">Humidity:</p>
+                        <p class="card-text wind-speed">Wind Speed:</p>
+                        <p class="card-text uv-index">UV Index: <span class="uv-box"></span></p>
                     </div>
                 </div>
             </div>      
+                <p class="pl-3 mb-1 mt-3 font-weight-bold five-day-text">5-Day Forecast:</p>
+            <div class="row justify-content-around">
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
+                        <p class="card-text">Temp</p>
+                        <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
+                        <p class="card-text">Temp</p>
+                        <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">    
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
+                        <p class="card-text">Temp</p>
+                        <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
+                        <p class="card-text">Temp</p>
+                        <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">    
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title">Date</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Insert Icon</h6>
+                        <p class="card-text">Temp</p>
+                        <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>  
+              </div>      
             </div>
         </div>
     </div>
