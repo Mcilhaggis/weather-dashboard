@@ -37,7 +37,8 @@ fetch(weatherAPI)
 .then((data) => {
     console.log(data);
     //icon link needs fixed
-            mainCity.innerText = data.name + ' ' + today + ' ' + data.weather[0].icon;
+            mainCity.innerText = data.name + ' ' + today + ' '
+            $(".current-icon").attr("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png");
             mainTemp.innerText = 'Temperature: ' + data.main.temp +'°F';
             mainHumidity.innerText = 'Humidity: ' + data.main.humidity +'%';
             mainWindSpeed.innerText = 'Wind Speed: ' + data.wind.speed + 'MPH';
@@ -51,33 +52,26 @@ fetch(weatherAPI)
             .then(function(response){
                 return response.json();
             })
-            //Apply UV rating to page
+            //Apply UV rating to page adn setting colour of box
             .then((data) => {
                 uvBox.innerText = data.value;
+                var uvValue = parseInt(uvBox.innerText);
+                if(uvValue <= 2){
+                    $(".uv-box").addClass("uv-low");
+                } else if (uvValue >= 3 && uvValue <= 5){
+                    $(".uv-box").addClass("uv-moderate");
+                } else if (uvValue >= 6 && uvValue <=7){
+                    $(".uv-box").addClass("uv-high");
+                }else if (uvValue >= 8 && uvValue <=10){
+                    $(".uv-box").addClass("uv-very-high");
+                }
             })
     });
 
 }
  
-//Set the colour of the UV box
-// needs to be fixed to chagne to higher uv rates
-
-
-if(uvBox.innerText <= 2){
-    $(".uv-box").addClass("uv-low");
-} else if (uvBox.innerText >= 3 && uvBox.innerText <= 5){
-    $(".uv-box").addClass("uv-moderate");
-} else if (uvBox.innerText >= 6 && uvBox.innerText <=7){
-    $(".uv-box").addClass("uv-high");
-}else if (uvBox.innerText >= 8 && uvBox.innerText <=10){
-    $(".uv-box").addClass("uv-very-high");
-}
-
-
-//Create 5-day cards dynamically and loop through whilst adding the info from the API per day
 
 //Getting the 5-day forecast for the immediately searched city 
-//Applying to one card first then will figure out loop
 function getFiveDayAPI(city){
     console.log(city);
     var weatherFiveDayAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=6b0d5c546226a11c17010c1077322954';
