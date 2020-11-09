@@ -10,22 +10,114 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!--Favicon-->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8skkANnFpQAk6PIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAABARABARAAABEBABEBAAAAEAAAEAAAAAIiIiIiIgAAIiIiIiIiIAAiIiIiIiIiAAAiIiIiIiIAACIiIiIiIAAAMiIiACIgAAMzIiIAAgAAAzMzIAAAAAADMzMwAAAAAAAzMwAAAAAAAAMwAAAAAAAAAAAAAAAAD++wAA9NMAAOWXAADvvwAAwAcAAIADAACAAQAA4AEAAOADAADgYwAAwHcAAMD/AADA/wAA4f8AAPP/AAD//wAA" rel="icon" type="image/x-icon" />
+    <!--Font Awesome Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>5-Day Weather Forecast</title>
 </head>
 <body>
     
 <!--Header-->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand mx-auto display-1">Weather Dashboard</a>
+        </div>
+      </nav>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <!--Sidebar Left-->
+            <div class="col-md-3 search-sidebar">
+                <!-- Search Bar-->
+                <p class="mt-2 font-weight-bold">Search for a city here:</p>
+                <div class="position-relative">
+                    <input type="text" placeholder="Type city here" id='search'>
+                    <button type="submit" class="btn btn-info position-absolute" id="save-search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="previouslySearched mt-4">
+                </div>
+            </div>
 
-<!--Sidebar Left-->
-<!-- Search Bar-->
-<!--Prevously Searched List-->
+        <!--Weather display side-->
+            <div class="col-md-9">
+            <!--Current City container-->
+            <div class="col-md-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title city-name" style="display: inline-block;">City</h5>
+                        <img class="card-title current-icon" ></img>
+                        <p class="card-text temperature">Temperature</p>
+                        <p class="card-text humidity">Humidity:</p>
+                        <p class="card-text wind-speed">Wind Speed:</p>
+                        <p class="card-text uv-index">UV Index: <span class="uv-box"></span></p>
+                    </div>
+                </div>
+            </div>      
+            <!-- Five day card display -->
+                <p class="pl-3 mb-1 mt-3 font-weight-bold five-day-text">5-Day Forecast:</p>
+            <div class="row justify-content-around">
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title date-five">Date</h5>
+                        <img class="five-icon" alt="Weather icon" src=""></img>
+                        <p class="card-text temp-five">Temp:</p>
+                        <p class="card-text humid-five">Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title date-five">Date</h5>
+                        <img class="five-icon" alt="Weather icon" src=""></img>
+                        <p class="card-text temp-five">Temp:</p>
+                        <p class="card-text humid-five">Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">    
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title date-five">Date</h5>
+                        <img class="five-icon" alt="Weather icon" src=""></img>
+                        <p class="card-text temp-five">Temp:</p>
+                        <p class="card-text humid-five">Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title date-five">Date</h5>
+                        <img class="five-icon" alt="Weather icon" src=""></img>
+                        <p class="card-text temp-five">Temp:</p>
+                        <p class="card-text humid-five">Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">    
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body five-card">
+                        <h5 class="card-title date-five">Date</h5>
+                        <img class="five-icon" alt="Weather icon" src=""></img>
+                        <p class="card-text temp-five">Temp:</p>
+                        <p class="card-text humid-five">Humidity:</p>
+                        </div>
+                    </div>
+                </div>  
+              </div>      
+            </div>
+        </div>
+    </div>
+</main>
 
-<!--Weather display side-->
-<!--Current City container-->
+
 <!--5-day forecast container-->
 <!--5-day forecast Cards-->
-
-
 
 
 

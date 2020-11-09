@@ -1,0 +1,35 @@
+.search-sidebar{
+    background-color: rgb(240, 240, 240);
+}
+
+.five-day-text{
+    font-size: 1.5rem;
+}
+
+.five-card{
+    background-color: rgb(64, 176, 184);
+    color: white;
+}
+
+.uv-low{
+    background: rgb(127, 248, 127);
+}
+
+.uv-moderate{
+    background: yellow;
+}
+
+.uv-high{
+    background: rgb(250, 127, 127);
+}
+
+.uv-very-high{
+    background: rgb(199, 115, 233);
+}
+
+.uv-box{
+    display: inline-block;
+    width: 50px;
+    height: auto;
+    text-align:center;
+}
