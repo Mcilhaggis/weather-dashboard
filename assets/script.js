@@ -15,11 +15,10 @@ var m = moment();
 $('.btn').click(function(e){
     e.preventDefault();
     cityName = document.getElementById('search').value;
-    //applying the input to the getAPI function
+
+
     getAPI(cityName);
     getFiveDayAPI(cityName);
-
-    //add function here for adding to previously searched list and maybe a second one for storing the data 
 
 }); 
 
@@ -58,10 +57,13 @@ fetch(weatherAPI)
                     $(".uv-box").addClass("uv-moderate");
                 } else if (uvValue >= 6 && uvValue <=7){
                     $(".uv-box").addClass("uv-high");
-                }else if (uvValue >= 8 && uvValue <=10){
+                }else if (uvValue >= 8 && uvValue <=15){
                     $(".uv-box").addClass("uv-very-high");
                 }
             })
+            .catch((error) => {
+                console.log('Error:', error);
+            });
     });
 
 }
@@ -77,13 +79,13 @@ function getFiveDayAPI(city){
         
     })
     .then((data) => {
-        console.log(data);
         var results = data.list;
 
         //5-day card variables 
 var fiveDayCards = document.querySelectorAll(".five-card");
 
 var cardIndex = 0;
+
         //adding dates to each of the cards from today's day onwards 
         for (i = 0; i < results.length; i+= 8){
                 var currentCard = fiveDayCards[cardIndex];
@@ -104,6 +106,9 @@ var cardIndex = 0;
             }
         
     })
+    .catch((error) => {
+        console.log('Error:', error);
+    });
 }
 
     
@@ -112,35 +117,22 @@ var cardIndex = 0;
 $('#save-search').on('click', function(){
     $('input[type="text"]').each(function(){        
         var searchedCity = $(this).val();
+        if(searchedCity === ""){
+        console.log("invalid input");
+        return;
+        }
         var previouslySearchedArr = JSON.parse(localStorage.getItem("citiesArr")) || [];
         previouslySearchedArr.push(searchedCity);
         localStorage.setItem("citiesArr", JSON.stringify(previouslySearchedArr));
+        searchButtons();
 
 
-        // getAPI(searchedCity);
-        // getFiveDayAPI(searchedCity);
+        getAPI(searchedCity);
+        getFiveDayAPI(searchedCity);
     });
 });
 
 
-// //Calls stored items on page load
-// function pageLoad () {
-//     var lastSearch = JSON.parse(localStorage.getItem('searchedCity'));
-    // var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded search-history' style='width: 12rem;'>").text(lastSearch);
-//     var psearch = $(".previouslySearched");
-//     psearch.append(searchDiv)
-//     $("#search-history").prepend(psearch);
-// }
-
-// pageLoad();
-
-// //Event deligation...
-// $("#search-history").on('click', '.btn', function(event) {
-// event.preventDefault();
-//     console.log($(this).text());
-//     searchedCity($(this).text());
-
-// });
 
 // //Function for creating the buttons 
 function searchButtons() {
@@ -148,22 +140,18 @@ function searchButtons() {
     var buttonValueArray = JSON.parse(localStorage.getItem("citiesArr"));
     console.log(buttonValueArray);
     //loop over the values in the array (the city names)
-    for (i = 0; i < buttonValueArray.length; i++){
+    for (i= 0; i < buttonValueArray.length; i++){
         $(".previouslySearched").append($("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded search-history' style='width: 100%;'>").text(buttonValueArray[i]));
-        //Add event listener on the button will run the search function 
     }
-    var value = $(".search-history").text();
-    console.log(value);
+
 
         $(".search-history").click(function(e){
             e.preventDefault();
-
-            // getAPI(button text value );
-            // getFiveDayAPI(button text value);
+            var value = ($(this).text());
+            console.log(value);
+            getAPI(value);
+            getFiveDayAPI(value);
         });
     
     }
    
-
-searchButtons();
-//Append the button onto the page 
