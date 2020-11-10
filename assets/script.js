@@ -31,7 +31,6 @@ fetch(weatherAPI)
     return response.json();
 })
 .then((data) => {
-    //icon link needs fixed
             mainCity.innerText = data.name + ' ' + today + ' '
             $(".current-icon").attr("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png");
             mainTemp.innerText = 'Temperature: ' + data.main.temp +'°F';
@@ -51,9 +50,9 @@ fetch(weatherAPI)
             .then((data) => {
                 uvBox.innerText = data.value;
                 var uvValue = parseInt(uvBox.innerText);
-                if(uvValue <= 2){
+                if(uvValue < 2){
                     $(".uv-box").addClass("uv-low");
-                } else if (uvValue >= 3 && uvValue <= 5){
+                } else if (uvValue > 2 && uvValue < 5){
                     $(".uv-box").addClass("uv-moderate");
                 } else if (uvValue >= 6 && uvValue <=7){
                     $(".uv-box").addClass("uv-high");
@@ -85,7 +84,7 @@ function getFiveDayAPI(city){
 var fiveDayCards = document.querySelectorAll(".five-card");
 
 var cardIndex = 0;
-
+$(".date-five").empty();
         //adding dates to each of the cards from today's day onwards 
         for (i = 0; i < results.length; i+= 8){
                 var currentCard = fiveDayCards[cardIndex];
@@ -140,6 +139,7 @@ function searchButtons() {
     var buttonValueArray = JSON.parse(localStorage.getItem("citiesArr"));
     console.log(buttonValueArray);
     //loop over the values in the array (the city names)
+    $(".previouslySearched").empty();
     for (i= 0; i < buttonValueArray.length; i++){
         $(".previouslySearched").append($("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded search-history' style='width: 100%;'>").text(buttonValueArray[i]));
     }
