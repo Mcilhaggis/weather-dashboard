@@ -12,7 +12,7 @@ var today = moment().format("l");
 var m = moment();
 
 //Getting the users city input value
-$('.btn').click(function(e){
+$('#save-search').click(function(e){
     e.preventDefault();
     cityName = document.getElementById('search').value;
 //Running API
@@ -128,12 +128,21 @@ $('#save-search').on('click', function(){
 
         getAPI(searchedCity);
         getFiveDayAPI(searchedCity);
+
+        
+            //Clear search history if button clicked
+            $('#clear').click(function(e){
+                e.preventDefault();
+                $(".previouslySearched").empty();
+                var previouslySearchedArr = JSON.parse(localStorage.getItem("citiesArr")) || [];
+                previouslySearchedArr = [];
+                localStorage.setItem("citiesArr", JSON.stringify(previouslySearchedArr));
+            });
+ 
     });
 });
 
-
-
-// //Function for creating the buttons 
+//Function for creating the buttons 
 function searchButtons() {
     //check local storage to check for key (past searches)
     var buttonValueArray = JSON.parse(localStorage.getItem("citiesArr"));
@@ -154,4 +163,7 @@ function searchButtons() {
         });
     
     }
+
+
+    searchButtons();
    

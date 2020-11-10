@@ -31,14 +31,15 @@
             <div class="col-md-3 search-sidebar">
                 <!-- Search Bar-->
                 <p class="mt-1 font-weight-bold">Search for a city here:</p>
-                <div class="position-relative">
-                    <input type="text" placeholder="Type city here" id='search' required>
+                <div class="position-relative w-100">
+                    <input type="text"  class="w-75" placeholder="Type city here" id='search' required>
                     <button type="submit" class="btn btn-info position-absolute" id="save-search">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
                 <div class="previouslySearched mt-4">
                 </div>
+                <button type="clear" class="btn btn-info mt-3" id="clear">Clear</button>
             </div>
 
         <!--Weather display side-->
@@ -52,7 +53,7 @@
                         <p class="card-text temperature">Temperature</p>
                         <p class="card-text humidity">Humidity:</p>
                         <p class="card-text wind-speed">Wind Speed:</p>
-                        <p class="card-text uv-index">UV Index: <span class="uv-box"></span></p>
+                        <p class="card-text uv-index">UV Index: <span id="uv-box"></span></p>
                     </div>
                 </div>
             </div>      
