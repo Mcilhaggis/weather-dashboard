@@ -6,7 +6,7 @@ var mainTemp = document.querySelector(".temperature");
 var mainHumidity = document.querySelector(".humidity");
 var mainWindSpeed = document.querySelector(".wind-speed");
 var mainUvIndex = document.querySelector(".uv-index");
-var uvBox = document.querySelector(".uv-box");
+var uvBox = document.querySelector("#uv-box");
 //Time Variables
 var today = moment().format("l");
 var m = moment();
@@ -15,8 +15,7 @@ var m = moment();
 $('.btn').click(function(e){
     e.preventDefault();
     cityName = document.getElementById('search').value;
-
-
+//Running API
     getAPI(cityName);
     getFiveDayAPI(cityName);
 
@@ -50,14 +49,15 @@ fetch(weatherAPI)
             .then((data) => {
                 uvBox.innerText = data.value;
                 var uvValue = parseInt(uvBox.innerText);
+                $("#uv-box").removeClass();
                 if(uvValue < 2){
-                    $(".uv-box").addClass("uv-low");
+                    $("#uv-box").addClass("uv-low");
                 } else if (uvValue > 2 && uvValue < 5){
-                    $(".uv-box").addClass("uv-moderate");
+                    $("#uv-box").addClass("uv-moderate");
                 } else if (uvValue >= 6 && uvValue <=7){
-                    $(".uv-box").addClass("uv-high");
+                    $("#uv-box").addClass("uv-high");
                 }else if (uvValue >= 8 && uvValue <=15){
-                    $(".uv-box").addClass("uv-very-high");
+                    $("#uv-box").addClass("uv-very-high");
                 }
             })
             .catch((error) => {
