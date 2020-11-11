@@ -1,7 +1,7 @@
-# weather-dashboard# Javascript Coding and Coded Quiz 
+# Weather Dashboard 
 
 ## About the Project
-This interactive quiz was built using **HTML, Bootstrap framework, and Javascript**. The aim of ths project was to retrieve data from another application's API and using it in the context of my own. The goal is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+This interactive Weather Application was built using **HTML, Bootstrap framework, and Javascript**. The aim of ths project was to retrieve data from another application's API and using it in the context of my own. The goal is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 ## Features 
  * A weather dashboard with form inputs
