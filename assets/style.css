@@ -27,7 +27,7 @@
     background: rgb(199, 115, 233);
 }
 
-.uv-box{
+#uv-box{
     display: inline-block;
     width: 50px;
     height: auto;
